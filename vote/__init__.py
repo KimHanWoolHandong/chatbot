@@ -1,8 +1,10 @@
+#set FLASK_APP=vote
+#set FLASK_ENV=development
 #flask run --host 192.168.10.45
 
 
 from flask import Flask, request, jsonify, render_template
-#from konlpy.tag import Komoran
+from konlpy.tag import Komoran
 import sys
 
 app = Flask(__name__)
@@ -16,6 +18,30 @@ def Keyboard():
 @app.route("/image")
 def home():
     return render_template('d3.html')
+
+@app.route('/morphs', methods=['POST'])
+def Morphs():
+    print(1)
+    content = request.get_json()
+    content = content['userRequest']['utterance']
+    komoran = Komoran(userdic='./user_dic.txt')
+
+    content_morphs = komoran.morphs(content)
+    print(content_morphs)
+    dataSend = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": "형태소 분석 결과 {} 입니다".format(content_morphs)
+                    }
+                }
+            ]
+        }
+    }
+
+    return jsonify(dataSend)
 
 @app.route('/message', methods=['POST'])
 def Message():
