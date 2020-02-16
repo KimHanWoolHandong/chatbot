@@ -17,7 +17,7 @@ def create_app(test_config=None):
     def hello_world():
         return 'Hello World!'
 
-    app.json_encoder = json.CustomJSONEncoder
+    app.json_encoder = json.JSONEncoder
 
     if test_config is None:  # 2) 만일 test_conig 인자가 None이면 config.py파일에서 설정을 읽는다.
         app.config.from_pyfile("config.py")
