@@ -57,46 +57,47 @@ def Matching():
 
     regex = re.compile('\w\w[률율]')
     match = regex.search(content)
-
+    text = ""
     # 도시 하나만 묻는 경우만 한정
     for city in nnp_lst:
         if city in data:
             #목록별 데이터 정리
             result = data[city]
             tell_city = "{}선거 결과".format(city)
-            tell_turnout = "투표율 {}%\n".format(result['turnout'])
+            tell_turnout = "투표율 {}%".format(result['turnout'])
             tell_vote1 = "OO 후보 {}%\n".format(result['vote1'])
             tell_vote2 = "OO 후보 {}%\n".format(result['vote2'])
             tell_status = "개표율 {}%".format(result['status'])
 
             if match is None:
                 #비율 관련 요청이 없을 경우 종합 정보 제공
-                text = tell_city + "(" + tell_turnout + ")\n" + \
-                        tell_vote1 + tell_vote2 + tell_status + "기준"
+                text += tell_city + "(" + tell_turnout + ")\n" + \
+                        tell_vote1 + tell_vote2 + tell_status + " 기준"
             else:
                 #string 형태로 변환
                 rate = match.group()
                 #알맞게 text 제작
                 if rate == "투표율":
-                    text = tell_city + " " + tell_turnout
+                    text += tell_city + " " + tell_turnout
                 elif rate == "개표율":
-                    text = tell_city + " " + tell_status
+                    text += tell_city + " " + tell_status
                 else:
-                    text = tell_city + "(" + tell_turnout + ")\n" + \
-                           tell_vote1 + tell_vote2 + tell_status + "기준"
+                    text += tell_city + "(" + tell_turnout + ")\n" + \
+                           tell_vote1 + tell_vote2 + tell_status + " 기준"
+            text += "\n"
 
-            dataSend = {
-                "version": "2.0",
-                "template": {
-                    "outputs": [
-                        {
-                            "simpleText": {
-                                "text": text
-                            }
-                        }
-                    ]
+    dataSend = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": text
+                    }
                 }
-            }
+            ]
+        }
+    }
     return dataSend
 
 
