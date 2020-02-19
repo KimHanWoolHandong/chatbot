@@ -6,8 +6,26 @@
 from flask import Flask, request, jsonify, render_template
 from konlpy.tag import Komoran
 import sys
+import csv
 
 app = Flask(__name__)
+# with open('./vote/static/data.csv', 'r', 'utf-8') as f:
+#     reader = csv.reader(f)
+#     a_list = list(reader)
+#     print(a_list)
+# for line in rdr:
+#     print(line)
+#     if count != 0:
+#         vote1 = int(line[1])/int(line[5])
+#         vote2 = int(line[2])/int(line[5])
+#         turnout = int(line[4])/int(line[3])
+#         status = int(line[5])/int(line[4])
+#         lst = [vote1, vote2, turnout, status]
+#         data[line[0]] = lst
+#     count += 1
+# print(data)
+
+
 
 @app.route('/keyboard')
 def Keyboard():
@@ -19,6 +37,15 @@ def Keyboard():
 def home():
     return render_template('d3.html')
 
+@app.route('/matching', methods=['POST'])
+def Matching():
+    content = request.get_json()
+    content = content['userRequest']['utterance']
+    content_morphs = Komoran.pos(content)
+    nnp_lst = [morph for (morph, key) in content_morphs if key == 'NNP']
+
+
+
 @app.route('/morphs', methods=['POST'])
 def Morphs():
     print(1)
@@ -26,15 +53,16 @@ def Morphs():
     content = content['userRequest']['utterance']
     komoran = Komoran(userdic='./user_dic.txt')
 
-    content_morphs = komoran.morphs(content)
-    print(content_morphs)
+    content_morphs = komoran.pos(content)
+    nnp_lst = [morph for (morph, key) in content_morphs if key == 'NNP']
+    print(nnp_lst)
     dataSend = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
                     "simpleText": {
-                        "text": "형태소 분석 결과 {} 입니다".format(content_morphs)
+                        "text": "뽑아온 NNP는 {} 입니다".format(nnp_lst)
                     }
                 }
             ]
