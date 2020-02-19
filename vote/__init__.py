@@ -2,7 +2,7 @@
 #set FLASK_ENV=development
 #flask run --host 192.168.10.45
 
-
+from datetime import datetime
 from flask import Flask, request, jsonify, render_template
 from konlpy.tag import Komoran
 import sys
@@ -70,6 +70,22 @@ def Morphs():
     }
 
     return jsonify(dataSend)
+
+@app.route('datetime', methods=['POST'])
+def Datetime():
+    time1 = datetime(2020, 4, 15)
+    time2 = datetime.now()
+    time_cal = str(-(time2 - time1).days)
+    dataSend = {
+        "version": "2.0",
+        "data": {
+            "datetime": time_cal
+        }
+    }
+
+    return jsonify(dataSend)
+
+
 
 @app.route('/message', methods=['POST'])
 def Message():
