@@ -1,11 +1,18 @@
 from flask import Flask, request, jsonify, current_app
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, Column, Integer, String
+from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
     return 'Hello World!'
+
+@app.route('/check_DB')
+def check_DB_connection():
+    return 'Hello World!'
+
 #############################################################
 
 def connect_to_DB(test_config=None):
@@ -23,11 +30,31 @@ def connect_to_DB(test_config=None):
     # 4)  3)에서 생성한 Engine 객체를 Flask 객체에 저장함으로써 connect_to_DB() 함수 외부에서도 데이터베이스를 사용할 수 있도록 한다.
     return
 
-### 정리 ###################################################
-# - SQLAlchemy의 create_engine 함수를 사용하여 데이터베이스에 연결하고 text 함수를 사용하여 실행시킬 SQL구문을 전달할 수 있다.
-#############################################################
+### 정리 - SQLAlchemy의 create_engine 함수를 사용하여 데이터베이스에 연결하고 text 함수를 사용하여 실행시킬 SQL구문을 전달할 수 있다. ###
 
 connect_to_DB()
+
+Base = declarative_base()
+class Example(Base):
+    __tablename__='example'
+    id = Column(Integer, primary_key=True)
+    data = Column(String(50), nullable=False)
+
+engine = app.database
+Base.metadata.create_all(engine)
+
+# (1) 세션 만들기
+Session = sessionmaker(bind=engine)
+mysql_session = Session()
+
+# (2) 맵핑클래스 인스턴스 만들기
+mini_example = Example()
+mini_example.data = 'helloworld'
+
+# (3) 세션에 맵핑 인스턴스 추가
+mysql_session.add(mini_example)
+mysql_session.commit()
+mysql_session.close()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

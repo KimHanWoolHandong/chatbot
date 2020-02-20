@@ -4,6 +4,15 @@
     <list default="true" id="dee5ac7b-7a62-447f-a5a6-dd569a3d257a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/static/code.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/static/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/static/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/static/topo.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/static/vote.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/templates/d3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/templates/image/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vote/templates/img_static.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +25,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+            <state relative-caret-position="470">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,8 +78,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="364" />
-    <option name="y" value="123" />
+    <option name="x" value="474" />
+    <option name="y" value="64" />
     <option name="width" value="2070" />
     <option name="height" value="1482" />
   </component>
@@ -88,11 +100,6 @@
               <item name="chat_bot" type="b2602c69:ProjectViewProjectNode" />
               <item name="chat_bot" type="462c0819:PsiDirectoryNode" />
               <item name="chatbot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chat_bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chat_bot" type="462c0819:PsiDirectoryNode" />
-              <item name="vote" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -161,15 +168,15 @@
       <updated>1581838482844</updated>
       <workItem from="1581838484039" duration="8190000" />
       <workItem from="1582020920905" duration="8488000" />
-      <workItem from="1582175888014" duration="2451000" />
+      <workItem from="1582175888014" duration="5433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19129000" />
+    <option name="totallyTimeSpent" value="22111000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="243" y="82" width="1380" height="988" extended-state="0" />
+    <frame x="316" y="43" width="1380" height="988" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.204236" />
@@ -186,8 +193,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.56626505" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27951807" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -239,8 +246,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+        <state relative-caret-position="470">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
