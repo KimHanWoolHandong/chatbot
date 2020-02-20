@@ -2,12 +2,12 @@ from flask import Flask, request, jsonify, current_app
 from sqlalchemy import create_engine, text
 import json
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
 #############################################################
 
 def create_app(test_config=None):
-    app = Flask(__name__)
+    # app = Flask(__name__)
     #  1) create_app이라는 함수를 정의한다.
     # Flask가 create_app이라는 이름의 함수를 자동으로 팩토리(factory) 함수로 인식해서 해당 함수를 통해 Flask를 실행시킨다.
     # 그리고 create_app 함수가 test_config 인자를 받는다.
@@ -37,5 +37,6 @@ def create_app(test_config=None):
 # - Flask가 create_app이라는 이름의 함수를 자동으로 팩토리(factory) 함수로 인식해서 해당 함수를 통해서 Flask를 실행한다.
 #############################################################
 
-#if __name__ == '__main__':
-#    app.run()
+create_app()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
